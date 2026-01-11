@@ -1,0 +1,274 @@
+/* ==========================================================================
+   1. BIẾN MÀU SẮC & FONT CHỮ
+   ========================================================================== */
+:root {
+  --red: #f42004;
+  --green: #027417;
+  --light-bg: #fff9e1;
+  --white-glow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@font-face {
+  font-family: 'TenFontCuaBan';
+  src: url('../Fonts/00119-UTM-HelvetIns.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SVN-Standly";
+  src: url("../Fonts/00085-UTM-EdwardianKT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'TenFontCuaBan', Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+  
+}
+
+/* Background toàn màn hình */
+.background-full {
+  position: fixed;
+  inset: 0;
+  background-image: url('../images/Thoigian.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Màu sắc chung */
+.green-text { color: var(--green); }
+.red-text { color: var(--red); }
+
+/* ==========================================================================
+   2. GIAO DIỆN ĐIỆN THOẠI (Mặc định - Không có khung mờ)
+   ========================================================================== */
+.main-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  height: 80px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px white);
+}
+
+.top-agency {
+  color: var(--red);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.main-invite {
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: var(--white-glow);
+}
+
+.officer-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--red);
+  margin-top: 10px; /* Khoảng cách vừa đủ dưới lời mời */
+  text-transform: uppercase;
+}
+
+.sub-invite {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.program-label {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 5px 0;
+}
+
+.event-title {
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.info-label {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.pill-box {
+  background-color: var(--light-bg);
+  border: 1.5px solid var(--red);
+  border-radius: 50px;
+  padding: 8px 15px;
+}
+
+.pill-text {
+  color: var(--green);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   3. GIAO DIỆN MÁY TÍNH (PC - Có khung mờ & Phóng to)
+   ========================================================================== */
+@media (min-width: 768px) {
+  
+  .main-frame {
+    width: 95%;           
+    max-width: 1400px;    
+    height: 92vh;         
+    padding: 20px 30px;   
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+  }
+
+  /* --- Căn chỉnh vị trí các khối nội dung --- */
+  .section-top {
+    margin-bottom: auto; /* Đẩy Logo & Lời mời lên đỉnh */
+    padding-top: 20px;
+  }
+
+  .section-middle {
+    margin-bottom: 10px; /* Nội dung giữa nằm gần Pill-box */
+  }
+
+  .section-bottom {
+    margin-bottom: 150px; /* Đẩy cụm Pill-box lên cao gần Event Title */
+  }
+
+  /* --- Định dạng chữ PC --- */
+  .logo { height: 130px; }
+
+  .top-agency {
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 1.4;
+    /* Viền trắng bo tròn 2px đa điểm */
+    text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+            margin-bottom: auto;
+  }
+
+  .main-invite { 
+    font-size: 50px; 
+    margin-top: 10px;
+    font-family: "SVN-Standly", Arial, sans-serif;
+    transform: translateZ(0);
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  }
+
+  .officer-name {
+    font-size: 40px;
+    font-weight: 900;
+    margin-top: 20px; /* Khoảng cách vừa đủ dưới "Trân trọng kính mời" */
+  }
+
+  .sub-invite { font-size: 45px; font-family: "SVN-Standly", Arial, sans-serif; transform: translateZ(0);
+      text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3)); }
+  .program-label { font-size: 45px; font-family: "SVN-Standly", Arial, sans-serif; transform: translateZ(0);
+        text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+ }
+  
+  .event-title { 
+    font-size: 45px; 
+    font-weight: bold;
+    margin-bottom: 15px; 
+    text-shadow: 
+      2.5px 0px 0 #fff, -2px 0px 0 #fff, 0px 2.5px 0 #fff, 0px -2px 0 #fff,
+      1.41px 1.41px 0 #fff, -1.41px 1.41px 0 #fff, 1.41px -1.41px 0 #fff, -1.41px -1.41px 0 #fff,
+      1.85px 0.77px 0 #fff, 1.85px -0.77px 0 #fff, -1.85px 0.77px 0 #fff, -1.85px -0.77px 0 #fff,
+      0.77px 1.85px 0 #fff, 0.77px -1.85px 0 #fff, -0.77px 1.85px 0 #fff, -0.77px -1.85px 0 #fff;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6))
+            drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  }
+
+  /* --- Thông tin hàng ngang trên PC --- */
+  .info-group {
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .pill-box {
+    padding: 15px 50px;
+  }
+
+  .pill-text {
+    font-size: 22px;
+  }
+
+  .info-label {
+    font-size: 20px;
+  }
+}
